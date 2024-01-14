@@ -43,7 +43,7 @@ def install_maas(maas_dbuser, maas_dbpass, maas_dbname):
     HOSTNAME= 'localhost'
 
     # Create a suitable PostgreSQL user
-    _, _, return_code = run_command("sudo -i -u postgres psql -c 'CREATE USER \"$MAAS_DBUSER\" WITH ENCRYPTED PASSWORD '$MAAS_DBPASS''")
+    _, _, return_code = run_command(f'sudo -i -u postgres psql -c 'CREATE USER \"$MAAS_DBUSER\" WITH ENCRYPTED PASSWORD '$MAAS_DBPASS';"')
     if return_code != 0:
         print("Error create user for postgresql. Exiting.")
         return
